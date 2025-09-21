@@ -1,5 +1,7 @@
 package org.example.presentacion;
 
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Scanner;
 
 public class Main {
@@ -9,39 +11,36 @@ public class Main {
 
         System.out.print("Ingresa la cantidad de nodos: ");
         nodos = Integer.parseInt(entrada.nextLine());
-        cantidadRelaciones = relacionesPosibles(nodos);
-        System.out.println("La cantidad de relaciones es: "+cantidadRelaciones);
 
-        crearRelaciones(nodos,entrada);
+        cantidadRelaciones = aristasPosibles(nodos);
+
+        System.out.println("La cantidad de aristas posibles es: "+cantidadRelaciones);
+        System.out.println("-------------------------------------");
+
+        asignarValorAristas(nodos,entrada);
+
     }
 
-    public static int relacionesPosibles(int nodos){
+    public static int aristasPosibles(int nodos){
         int cantidadRelaciones;
 
         cantidadRelaciones = (nodos*(nodos-1))/2;
-
         return cantidadRelaciones;
     }
 
-    public static void crearRelaciones(int nodos,Scanner entrada){
+    public static void asignarValorAristas(int nodos,Scanner entrada){
+        List<Aristas> aristas = new ArrayList<>();
         int arregloRelaciones[][] = new int[nodos][nodos];
-        //boolean esRepetido = true;
         for(int i = 0; i < arregloRelaciones.length; i++){
             for(int c =0; c < arregloRelaciones[0].length;c++){
                 if(i !=c && i<=c){
-                    System.out.print("Ingresa el valor de la posicion "+i+","+c+" : ");
-                    arregloRelaciones[i][c] = Integer.parseInt(entrada.nextLine());
+                    System.out.print("Ingresa el peso de la posicion "+i+"-"+c+" : ");
+                    int peso = arregloRelaciones[i][c] = Integer.parseInt(entrada.nextLine());
+                    Aristas arista = new Aristas(i,c,peso);
+                    aristas.add(arista);
                 }
             }
         }
+
     }
-
-//    public static boolean revisarRepetidos(boolean esRepetido,int i,int c){
-//        if(i>=c){
-//            esRepetido = false;
-//        }
-//        return esRepetido;
-//    }
-
-
 }
