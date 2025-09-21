@@ -45,15 +45,15 @@ public class Main {
                 }
             }
         }
-        System.out.println("\s\s------------------------------");
-        for(int i = 0; i < arregloRelaciones.length; i++){
-            for(int c =0; c < arregloRelaciones[0].length;c++){
-                if(i !=c && i<=c){
-                    int peso = arregloRelaciones[i][c];
-                    System.out.println("La arista "+i+"-"+c+" tiene un peso de"+" : "+peso);
-                }
-            }
-        }
+//        System.out.println("\s\s------------------------------");
+//        for(int i = 0; i < arregloRelaciones.length; i++){
+//            for(int c =0; c < arregloRelaciones[0].length;c++){
+//                if(i !=c && i<=c){
+//                    int peso = arregloRelaciones[i][c];
+//                    System.out.println("La arista "+i+"-"+c+" tiene un peso de"+" : "+peso);
+//                }
+//            }
+//        }
         return aristas;
     }
 

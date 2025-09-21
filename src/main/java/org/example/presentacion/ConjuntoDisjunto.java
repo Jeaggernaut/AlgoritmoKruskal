@@ -10,16 +10,16 @@ public class ConjuntoDisjunto {
         }
     }
 
-    public int find(int nodo) {
+    public int encontrar(int nodo) {
         if (padre[nodo] != nodo) {
-            padre[nodo] = find(padre[nodo]); // Compresión de camino
+            padre[nodo] = encontrar(padre[nodo]); // Compresión de camino
         }
         return padre[nodo];
     }
 
     public void union(int nodo1, int nodo2) {
-        int raiz1 = find(nodo1);
-        int raiz2 = find(nodo2);
+        int raiz1 = encontrar(nodo1);
+        int raiz2 = encontrar(nodo2);
 
         if (raiz1 != raiz2) {
             padre[raiz1] = raiz2; // Une los dos conjuntos
