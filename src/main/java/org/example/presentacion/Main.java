@@ -35,12 +35,12 @@ public class Main {
     public static List<Aristas> asignarValorAristas(int nodos,Scanner entrada){
         List<Aristas> aristas = new ArrayList<>();
         int arregloRelaciones[][] = new int[nodos][nodos];
-        for(int i = 0; i < arregloRelaciones.length; i++){
-            for(int c =0; c < arregloRelaciones[0].length;c++){
-                if(i !=c && i<=c){
-                    System.out.print("Ingresa el peso de la arista "+i+"-"+c+" : ");
+        for(int i = 0; i < arregloRelaciones.length; i++) {
+            for (int c = 0; c < arregloRelaciones[0].length; c++) {
+                if (i != c && i <= c) {
+                    System.out.print("Ingresa el peso de la arista " + i + "-" + c + " : ");
                     int peso = arregloRelaciones[i][c] = Integer.parseInt(entrada.nextLine());
-                    Aristas arista = new Aristas(i,c,peso);
+                    Aristas arista = new Aristas(i, c, peso);
                     aristas.add(arista);
                 }
             }
