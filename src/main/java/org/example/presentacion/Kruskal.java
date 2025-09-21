@@ -4,10 +4,29 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class Kruskal {
-    List<Aristas> arista = new ArrayList<>();
+    List<Aristas> aristas;
 
-    public void ordenarAristas(){
-
+    public Kruskal(List<Aristas> aristas) {
+        this.aristas = aristas;
     }
 
+    public void ejecutarKruskal(int nodos) {
+        ConjuntoDisjunto union = new ConjuntoDisjunto(nodos);
+        List<Aristas> arbolExpansion = new ArrayList<>();
+
+        for (Aristas arista : aristas) {
+            int nodo1 = arista.getNodo1();
+            int nodo2 = arista.getNodo2();
+            if (union.find(nodo1) != union.find(nodo2)) {
+                arbolExpansion.add(arista);
+                union.union(nodo1, nodo2);
+            }
+        }
+
+        System.out.println("\s\s------------------------------");
+        System.out.println("\tÁrbol de Expansión Mínima (Kruskal):");
+        for (Aristas arista : arbolExpansion) {
+            System.out.println("Arista: " + arista.getNodo1() + "-" + arista.getNodo2() + " Peso: " + arista.getPeso());
+        }
+    }
 }

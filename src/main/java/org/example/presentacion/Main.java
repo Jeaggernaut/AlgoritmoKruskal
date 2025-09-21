@@ -12,13 +12,16 @@ public class Main {
 
         cantidadRelaciones = aristasPosibles(nodos);
 
-        System.out.println("\tLa cantidad de aristas posibles es: "+cantidadRelaciones);
+        System.out.println("La cantidad de aristas posibles es: "+cantidadRelaciones);
         System.out.println("\s\s------------------------------");
 
         List<Aristas> aristas = asignarValorAristas(nodos, entrada);
 
         ordenarAristasPorPeso(aristas);
         mostrarAristasOrdenadas(aristas);
+
+        Kruskal kruskal = new Kruskal(aristas);
+        kruskal.ejecutarKruskal(nodos);
 
     }
 
@@ -35,10 +38,19 @@ public class Main {
         for(int i = 0; i < arregloRelaciones.length; i++){
             for(int c =0; c < arregloRelaciones[0].length;c++){
                 if(i !=c && i<=c){
-                    System.out.print("Ingresa el peso de la posicion "+i+"-"+c+" : ");
+                    System.out.print("Ingresa el peso de la arista "+i+"-"+c+" : ");
                     int peso = arregloRelaciones[i][c] = Integer.parseInt(entrada.nextLine());
                     Aristas arista = new Aristas(i,c,peso);
                     aristas.add(arista);
+                }
+            }
+        }
+        System.out.println("\s\s------------------------------");
+        for(int i = 0; i < arregloRelaciones.length; i++){
+            for(int c =0; c < arregloRelaciones[0].length;c++){
+                if(i !=c && i<=c){
+                    int peso = arregloRelaciones[i][c];
+                    System.out.println("La arista "+i+"-"+c+" tiene un peso de"+" : "+peso);
                 }
             }
         }
