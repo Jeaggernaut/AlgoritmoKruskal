@@ -25,15 +25,23 @@ public class Main {
 
     public static void crearRelaciones(int nodos,Scanner entrada){
         int arregloRelaciones[][] = new int[nodos][nodos];
-
+        //boolean esRepetido = true;
         for(int i = 0; i < arregloRelaciones.length; i++){
-            for(int c = 0; c < arregloRelaciones[0].length;c++){
-                if(i != c){
+            for(int c =0; c < arregloRelaciones[0].length;c++){
+                if(i !=c && i<=c){
                     System.out.print("Ingresa el valor de la posicion "+i+","+c+" : ");
                     arregloRelaciones[i][c] = Integer.parseInt(entrada.nextLine());
                 }
             }
         }
-
     }
+
+//    public static boolean revisarRepetidos(boolean esRepetido,int i,int c){
+//        if(i>=c){
+//            esRepetido = false;
+//        }
+//        return esRepetido;
+//    }
+
+
 }
