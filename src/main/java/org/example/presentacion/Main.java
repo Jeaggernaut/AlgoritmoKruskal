@@ -1,8 +1,6 @@
 package org.example.presentacion;
 
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Scanner;
+import java.util.*;
 
 public class Main {
     public static void main(String[] args) {
@@ -14,10 +12,13 @@ public class Main {
 
         cantidadRelaciones = aristasPosibles(nodos);
 
-        System.out.println("La cantidad de aristas posibles es: "+cantidadRelaciones);
-        System.out.println("-------------------------------------");
+        System.out.println("\tLa cantidad de aristas posibles es: "+cantidadRelaciones);
+        System.out.println("\s\s------------------------------");
 
-        asignarValorAristas(nodos,entrada);
+        List<Aristas> aristas = asignarValorAristas(nodos, entrada);
+
+        ordenarAristasPorPeso(aristas);
+        mostrarAristasOrdenadas(aristas);
 
     }
 
@@ -28,7 +29,7 @@ public class Main {
         return cantidadRelaciones;
     }
 
-    public static void asignarValorAristas(int nodos,Scanner entrada){
+    public static List<Aristas> asignarValorAristas(int nodos,Scanner entrada){
         List<Aristas> aristas = new ArrayList<>();
         int arregloRelaciones[][] = new int[nodos][nodos];
         for(int i = 0; i < arregloRelaciones.length; i++){
@@ -41,6 +42,23 @@ public class Main {
                 }
             }
         }
+        return aristas;
+    }
 
+    public static void ordenarAristasPorPeso(List<Aristas> aristas) {
+        Collections.sort(aristas, new Comparator<Aristas>() {
+            @Override
+            public int compare(Aristas arista1, Aristas arista2) {
+                return Integer.compare(arista1.getPeso(), arista2.getPeso());
+            }
+        });
+    }
+
+    public static void mostrarAristasOrdenadas(List<Aristas> aristas) {
+        System.out.println("\s\s------------------------------");
+        System.out.println("\tLas aristas ordenadas quedan :");
+        for (Aristas arista : aristas) {
+            System.out.println("Arista: " + arista.getNodo1() + "-" + arista.getNodo2() + " Peso: " + arista.getPeso());
+        }
     }
 }
