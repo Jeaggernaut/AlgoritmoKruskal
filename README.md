@@ -14,7 +14,7 @@ Este proyecto está hecho en Java utilizando Maven y tiene como objetivo encontr
 
 ## Requisitos
 
-- **Java**
+- **Java JDK 21**
 - **Maven** para la gestión de dependencias.
 
 ## Instalación
